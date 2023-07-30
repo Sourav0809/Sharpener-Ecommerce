@@ -1,0 +1,20 @@
+const Header = () => {
+  return (
+    <>
+      <header className=" flex bg-black text-white p-4 text-lg justify-center items-center gap-20">
+        <h1>HOME</h1>
+        <h1>STORE</h1>
+        <h1>ABOUT</h1>
+        <button className="absolute right-14 border p-1 rounded-md">
+          CART
+        </button>
+      </header>
+
+      <section className="flex justify-center items-center bg-gray-600 text-white mt-1 p-20 text-8xl">
+        <h1>The Generics</h1>
+      </section>
+    </>
+  );
+};
+
+export default Header;
