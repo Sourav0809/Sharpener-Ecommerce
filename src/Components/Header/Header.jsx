@@ -1,11 +1,15 @@
-const Header = () => {
+/* eslint-disable react/prop-types */
+const Header = (props) => {
   return (
     <>
-      <header className=" flex bg-black text-white p-4 text-lg justify-center items-center gap-20">
+      <header className=" sticky top-0 left-0 flex bg-black text-white p-4 text-lg justify-center items-center gap-20">
         <h1>HOME</h1>
         <h1>STORE</h1>
         <h1>ABOUT</h1>
-        <button className="absolute right-14 border p-1 rounded-md">
+        <button
+          onClick={props.showCartContainer}
+          className="absolute right-14 border p-1 rounded-md"
+        >
           CART
         </button>
       </header>
