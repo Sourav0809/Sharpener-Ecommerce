@@ -10,10 +10,13 @@ function App() {
   const showCartContainer = () => {
     setViewCart(true);
   };
+  const hideCartContainer = () => {
+    setViewCart(false);
+  };
 
   return (
     <>
-      {viewCart && <CartContainer />}
+      {viewCart && <CartContainer hideCartContainer={hideCartContainer} />}
       <Header showCartContainer={showCartContainer} />
       <ProductsContainer />
       <Footer />

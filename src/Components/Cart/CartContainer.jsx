@@ -1,59 +1,36 @@
+/* eslint-disable react/prop-types */
 import Cart from "./Cart";
 import Modal from "../Modal/Modal";
+import CartContext from "../Store/CartContext";
+import { useContext } from "react";
 
-const dummyCart = [
-  {
-    title: "Colors",
-    price: 100,
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-    quantity: 2,
-  },
-  {
-    title: "Black and white Colors",
-    price: 50,
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-    quantity: 3,
-  },
-  {
-    title: "Yellow and Black Colors",
-    price: 70,
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-    quantity: 1,
-  },
-  {
-    title: "Yellow and Black Colors",
-    price: 70,
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-    quantity: 1,
-  },
-  {
-    title: "Yellow and Black Colors",
-    price: 70,
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-    quantity: 1,
-  },
-  {
-    title: "Yellow and Black Colors",
-    price: 70,
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-    quantity: 1,
-  },
-];
+const CartContainer = (props) => {
+  const cartCtx = useContext(CartContext);
 
-const CartContainer = () => {
   return (
     <Modal>
-      {dummyCart.map((items) => {
+      {cartCtx.cartItems.map((items) => {
         return (
           <Cart
             key={items.title}
             title={items.title}
             price={items.price}
             quantity={items.quantity}
-            img={items.imageUrl}
+            img={items.img}
           />
         );
       })}
+      <button
+        className=" absolute top-3 right-6 border-2 border-black p-1 rounded-lg"
+        onClick={props.hideCartContainer}
+      >
+        X
+      </button>
+      <div className=" flex justify-center items-center mt-6 ">
+        <button className="border-2 border-black bg-indigo-600 text-white pt-1 pb-1 pl-2 pr-2 rounded-md text-lg">
+          Order Now
+        </button>
+      </div>
     </Modal>
   );
 };
