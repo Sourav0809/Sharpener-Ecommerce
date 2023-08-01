@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import CartContext from "../Store/CartContext";
 const Header = (props) => {
@@ -6,9 +7,15 @@ const Header = (props) => {
   return (
     <>
       <header className=" sticky top-0 left-0 flex bg-black text-white p-4 text-lg justify-center items-center gap-20">
-        <h1>HOME</h1>
-        <h1>STORE</h1>
-        <h1>ABOUT</h1>
+        <NavLink to="/">
+          <h1>HOME</h1>
+        </NavLink>
+        <NavLink to="/">
+          <h1>STORE</h1>
+        </NavLink>
+        <NavLink to="/about">
+          <h1>ABOUT</h1>
+        </NavLink>
         <button
           onClick={props.showCartContainer}
           className="absolute right-24 top-2 border p-1 rounded-md"
