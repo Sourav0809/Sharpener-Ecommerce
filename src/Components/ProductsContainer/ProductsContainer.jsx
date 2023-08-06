@@ -4,6 +4,9 @@ import Card from "../Card/Card";
 const ProductsContainer = () => {
   return (
     <>
+      <section className="flex justify-center items-center bg-gray-600 text-white mt-1 p-20 text-8xl">
+        <h1>The Generics</h1>
+      </section>
       <Card>
         {DummyProduct.map((items) => {
           return (

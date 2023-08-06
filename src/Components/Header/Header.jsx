@@ -10,7 +10,7 @@ const Header = (props) => {
         <NavLink to="/">
           <h1>HOME</h1>
         </NavLink>
-        <NavLink to="/">
+        <NavLink to="/store">
           <h1>STORE</h1>
         </NavLink>
         <NavLink to="/about">
@@ -26,10 +26,6 @@ const Header = (props) => {
           {CartItemsLength}
         </h1>
       </header>
-
-      <section className="flex justify-center items-center bg-gray-600 text-white mt-1 p-20 text-8xl">
-        <h1>The Generics</h1>
-      </section>
     </>
   );
 };
