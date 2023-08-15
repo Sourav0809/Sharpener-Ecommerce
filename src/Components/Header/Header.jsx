@@ -8,13 +8,16 @@ const Header = (props) => {
     <>
       <header className=" sticky top-0 left-0 flex bg-black text-white p-4 text-lg justify-center items-center gap-20">
         <NavLink to="/">
-          <h1>HOME</h1>
+          <h1>Home</h1>
         </NavLink>
         <NavLink to="/store">
-          <h1>STORE</h1>
+          <h1>Store</h1>
         </NavLink>
         <NavLink to="/about">
-          <h1>ABOUT</h1>
+          <h1>About</h1>
+        </NavLink>
+        <NavLink to="/contact-us">
+          <h1>Contact Us</h1>
         </NavLink>
         <button
           onClick={props.showCartContainer}
