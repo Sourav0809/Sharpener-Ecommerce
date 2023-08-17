@@ -52,7 +52,7 @@ const ContactUs = () => {
 
       {/* Contact Us Form  */}
 
-      <div className=" mt-6 mb-20 w-[60rem] ml-auto mr-auto bg-slate-500 rounded-lg form-container min-[340px]:w-[90%] max-[700px]:w-[90%] min-[700px]:w-[60rem]">
+      <div className="mt-6 mb-20 w-[60rem] ml-auto mr-auto bg-slate-500 rounded-lg form-container min-[340px]:w-[90%]  max-[700px]:w-[90%] min-[700px]:w-[60rem]">
         <form
           className="flex flex-col p-16 text-xl gap-2 justify-center"
           onSubmit={submitedFormHandeler}

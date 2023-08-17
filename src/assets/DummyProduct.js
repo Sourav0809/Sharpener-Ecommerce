@@ -1,31 +1,39 @@
 const DummyProduct =
     [
         {
-            title: 'Album 1',
-            name: 'Colors',
-            price: 100,
-            imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%201.png',
+            title: 'Men Printed Green T-shirt',
+            name: 'Men Printed Green T-shirt',
+            color: 'Green',
+            price: 60,
+            ratings: 5,
+            imageUrl: 'https://5.imimg.com/data5/UX/KF/MY-23375112/full-sleeve-printed-t-shirt-500x500.jpg',
         },
 
         {
-            title: 'Album 2',
-            name: 'Black and white Colors',
+            title: 'Men Printed Red T-shirt',
+            name: 'Men Printed Red T-shirt',
+            color: 'Red',
             price: 50,
-            imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%202.png',
+            ratings: 4,
+            imageUrl: 'https://sefbuy.com/wp-content/uploads/2018/05/redplainroundneckt-shirt-1.jpg',
         },
 
         {
-            title: 'Album 3',
-            name: 'Yellow and Black Colors',
+            title: 'Men Printed Blue T-shirt',
+            name: 'Men Printed Blue T-shirt',
+            color: 'Blue',
             price: 70,
-            imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%203.png',
+            ratings: 3,
+            imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMByMYz41FBNn2Rd4isfG_-gRcUNgdcIPg6Xb8DwfMNqYx-zmDVX9av0LfGyf38My8ffo&usqp=CAU',
         },
 
         {
-            title: 'Album 4',
-            name: 'Blue Color',
-            price: 100,
-            imageUrl: 'https://prasadyash2411.github.io/ecom-website/img/Album%204.png',
+            title: 'Men Printed Yellow T-shirt',
+            name: 'Men Printed Yellow T-shirt',
+            color: 'Yellow',
+            price: 40,
+            ratings: 4,
+            imageUrl: 'https://5.imimg.com/data5/QH/NF/ND/SELLER-77285320/22-jpeg-250x250.jpeg',
         }
 
     ]
