@@ -30,7 +30,7 @@ const ContactUs = () => {
     };
     try {
       const postedData = await axios.post(
-        "https://sharpener-ecommerce-default-rtdb.firebaseio.com/users.json",
+        "https://sharpener-ecommerce-default-rtdb.firebaseio.com/contactUs.json",
         submitedData
       );
 

@@ -4,15 +4,27 @@ import AuthContext from "./AuthContext";
 
 const AuthProvider = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
+  const [userEmail, setUserEmail] = useState(null);
 
   const LoginHandeler = (token) => {
     setIsLoggedIn(token);
-    localStorage.setItem("idToken", token);
+  };
+
+  const logOutHandeler = () => {
+    setIsLoggedIn(null);
+    localStorage.removeItem("idToken");
+  };
+
+  const setUserEmailHandeler = (email) => {
+    setUserEmail(email);
   };
 
   const AuthProviderValues = {
     isLoggedIn: isLoggedIn,
     logIn: LoginHandeler,
+    logOut: logOutHandeler,
+    userEmail: userEmail,
+    setUserEmail: setUserEmailHandeler,
   };
 
   return (

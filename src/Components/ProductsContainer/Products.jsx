@@ -1,24 +1,34 @@
 /* eslint-disable react/prop-types */
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import CartContext from "../Store/CartContext";
-import { toast } from "react-toastify";
 
 const Products = (props) => {
-  const CartCtx = useContext(CartContext);
   const navigate = useNavigate();
+  const [quantity, setQuantity] = useState(0);
+  const CartCtx = useContext(CartContext);
+
+  const foundedCartItem = CartCtx.cartItems.find((val) => {
+    return val.id === props.title;
+  });
+
+  useEffect(() => {
+    if (foundedCartItem) {
+      setQuantity(foundedCartItem.quantity);
+    }
+  }, [foundedCartItem]);
 
   const addItemHandeler = (e) => {
     e.stopPropagation();
     const addedCartItem = {
       title: props.title,
       price: props.price,
-      quantity: 1,
+      quantity: quantity + 1,
       img: props.img,
       id: props.title,
     };
-    CartCtx.addToCart(addedCartItem);
-    toast.success("Product Added ");
+    CartCtx.addToCart(addedCartItem, setQuantity);
+    // toast.success("Product Added ");
   };
 
   const onclickedProductHandeler = (e) => {

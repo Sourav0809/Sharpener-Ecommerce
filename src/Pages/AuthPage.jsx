@@ -3,6 +3,9 @@ import { useContext, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import AuthContext from "../Components/Store/AuthContext/AuthContext";
 import { useNavigate } from "react-router-dom";
+import formatEmail from "../Functions/formatEmail";
+import CartContext from "../Components/Store/CartContext";
+
 const AuthPage = () => {
   const [login, setLogIn] = useState(true);
   const [loader, setLoader] = useState(false);
@@ -10,6 +13,7 @@ const AuthPage = () => {
   const pwdInputRef = useRef();
   const authCtx = useContext(AuthContext);
   const navigate = useNavigate();
+  const cartCtx = useContext(CartContext);
 
   // handler to handle that the user is try to login or sign up
   const setLogInHandeler = () => {
@@ -41,13 +45,29 @@ const AuthPage = () => {
         // hiding the loader
         setLoader(false);
         setLogIn(true);
-        console.log(authRes);
+        // console.log(authRes);
       }
+
       if (login) {
         const authRes = await axios.post(
           "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyD_YG6FKy-pwibOzDm5M28DsAg3zgwe27k",
           submitedRes
         );
+        authCtx.setUserEmail(authRes.data.email);
+
+        // set the already added cart item to the cart after login
+        const { data } = await axios.get(
+          `https://sharpener-ecommerce-default-rtdb.firebaseio.com/cart/${formatEmail(
+            authRes.data.email
+          )}.json`
+        );
+
+        const arr = [];
+        for (let i in data) {
+          arr.push(data[i]);
+        }
+        // console.log(arr);
+        cartCtx.setCartItems(arr);
 
         // if the request is succeed
         toast.success("User LoggedIn Succesfully ! ");
@@ -58,6 +78,7 @@ const AuthPage = () => {
         //storing the token into localstorage & context
         const idToken = authRes.data.idToken;
         authCtx.logIn(idToken);
+        localStorage.setItem("idToken", idToken);
 
         // navigating user to product page
         navigate("/store");

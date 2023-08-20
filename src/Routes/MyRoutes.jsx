@@ -18,7 +18,6 @@ function MyRoutes() {
           <Route path="/store" element={<ProductPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact-us" element={<ContactUs />} />
-          <Route path="/login" element={<AuthPage />} />
           <Route path="/product-details/:id" element={<ProductDetailsPage />} />
           <Route path="*" element={<HomePage />} />
         </>

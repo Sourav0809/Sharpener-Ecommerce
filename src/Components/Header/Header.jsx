@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import CartContext from "../Store/CartContext";
 import { AiOutlineShoppingCart } from "react-icons/ai";
@@ -7,7 +7,19 @@ import AuthContext from "../Store/AuthContext/AuthContext";
 import { toast } from "react-toastify";
 const Header = (props) => {
   const CartItemsLength = useContext(CartContext).cartItems.length;
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, logOut } = useContext(AuthContext);
+  const { setCartItems } = useContext(CartContext);
+  const navigate = useNavigate();
+
+  const logOutHandeler = () => {
+    // calling the log out function from the context to delete the token
+    logOut();
+    toast.success("User Sign Out Successfully ");
+
+    // making the cart blank
+    setCartItems([]);
+    navigate("/");
+  };
 
   return (
     <>
@@ -34,7 +46,11 @@ const Header = (props) => {
             <h1>About</h1>
           </NavLink>
           <NavLink to="/login">
-            <h1>LogIn</h1>
+            {!isLoggedIn ? (
+              <h1>LogIn</h1>
+            ) : (
+              <h1 onClick={logOutHandeler}>LogOut</h1>
+            )}
           </NavLink>
           <NavLink to="/contact-us">
             <h1>Contact Us</h1>

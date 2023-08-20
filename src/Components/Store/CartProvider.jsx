@@ -1,31 +1,49 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useContext, useState } from "react";
 import CartContext from "./CartContext";
+import axios from "axios";
+import AuthContext from "./AuthContext/AuthContext";
+import formatEmail from "../../Functions/formatEmail";
 
 const CartProvider = (props) => {
+  const authCtx = useContext(AuthContext);
   const [cartItems, setCartItems] = useState([]);
 
-  const addToCart = (newItems) => {
-    setCartItems((oldItems) => {
-      let alreadyPresent = false;
+  const addToCart = async (newItems, setQuantity) => {
+    try {
+      const { data } = await axios.patch(
+        `https://sharpener-ecommerce-default-rtdb.firebaseio.com/cart/${formatEmail(
+          authCtx.userEmail
+        )}.json`,
+        { [newItems.id]: newItems }
+      );
+      setQuantity((p) => p + 1);
 
-      const newArr = oldItems.map((items) => {
-        if (items.id === newItems.id) {
-          alreadyPresent = true;
-          items.quantity += newItems.quantity;
+      setCartItems((oldItems) => {
+        let alreadyPresent = false;
+
+        const newArr = oldItems.map((items) => {
+          if (items.id === newItems.id) {
+            alreadyPresent = true;
+            return newItems;
+          }
+          return items;
+        });
+
+        if (alreadyPresent === true) {
+          return newArr;
+        } else {
+          return [...newArr, newItems];
         }
-        return items;
       });
-      if (alreadyPresent === true) {
-        return newArr;
-      } else {
-        return [...newArr, newItems];
-      }
-    });
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
-    <CartContext.Provider value={{ addToCart, cartItems }}>
+    <CartContext.Provider value={{ addToCart, cartItems, setCartItems }}>
       {props.children}
     </CartContext.Provider>
   );

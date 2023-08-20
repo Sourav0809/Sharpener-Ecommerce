@@ -5,6 +5,8 @@ const AuthContext = React.createContext({
   timer: () => {},
   logIn: () => {},
   logOut: () => {},
+  userEmail: null,
+  setUserEmail: () => {},
 });
 
 export default AuthContext;
