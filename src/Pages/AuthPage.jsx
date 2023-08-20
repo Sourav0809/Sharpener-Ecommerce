@@ -2,12 +2,14 @@ import axios from "axios";
 import { useContext, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import AuthContext from "../Components/Store/AuthContext/AuthContext";
+import { useNavigate } from "react-router-dom";
 const AuthPage = () => {
   const [login, setLogIn] = useState(true);
   const [loader, setLoader] = useState(false);
   const emailInputRef = useRef();
   const pwdInputRef = useRef();
-  const AuthCtx = useContext(AuthContext);
+  const authCtx = useContext(AuthContext);
+  const navigate = useNavigate();
 
   // handler to handle that the user is try to login or sign up
   const setLogInHandeler = () => {
@@ -54,7 +56,11 @@ const AuthPage = () => {
         setLoader(false);
 
         //storing the token into localstorage & context
-        AuthCtx.logIn(authRes.data.idToken);
+        const idToken = authRes.data.idToken;
+        authCtx.logIn(idToken);
+
+        // navigating user to product page
+        navigate("/store");
       }
     } catch (error) {
       toast.error(error.response.data.error.message);

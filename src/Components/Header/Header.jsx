@@ -3,8 +3,12 @@ import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import CartContext from "../Store/CartContext";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import AuthContext from "../Store/AuthContext/AuthContext";
+import { toast } from "react-toastify";
 const Header = (props) => {
   const CartItemsLength = useContext(CartContext).cartItems.length;
+  const { isLoggedIn } = useContext(AuthContext);
+
   return (
     <>
       <header className=" sticky top-0 left-0 flex bg-black text-white p-4 pr-12 pl-12 text-lg justify-between items-center gap-20">
@@ -12,9 +16,20 @@ const Header = (props) => {
           <NavLink to="/">
             <h1>Home</h1>
           </NavLink>
-          <NavLink to="/store">
-            <h1>Store</h1>
-          </NavLink>
+          {!isLoggedIn ? (
+            <>
+              <NavLink to="/login">
+                <h1>Store</h1>
+              </NavLink>
+            </>
+          ) : (
+            <>
+              <NavLink to="/store">
+                <h1>Store</h1>
+              </NavLink>
+            </>
+          )}
+
           <NavLink to="/about">
             <h1>About</h1>
           </NavLink>
