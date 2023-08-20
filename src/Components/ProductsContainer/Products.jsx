@@ -2,6 +2,8 @@
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import CartContext from "../Store/CartContext";
+import { toast } from "react-toastify";
+
 const Products = (props) => {
   const CartCtx = useContext(CartContext);
   const navigate = useNavigate();
@@ -16,6 +18,7 @@ const Products = (props) => {
       id: props.title,
     };
     CartCtx.addToCart(addedCartItem);
+    toast.success("Product Added ");
   };
 
   const onclickedProductHandeler = (e) => {

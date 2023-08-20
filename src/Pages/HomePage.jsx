@@ -24,7 +24,7 @@ function HomePage() {
         <h1 className=" text-center font-serif text-4xl mt-5">Tours</h1>
       </div>
 
-      <div className=" mt-5 mb-10 ml-auto mr-auto w-[60rem] border-2 rounded-md border-cyan-400 p-4">
+      <div className=" mt-5 mb-10 ml-auto mr-auto min-[600px]:w-[60rem] min-[320px]: w-full border-2 rounded-md border-cyan-400 p-4">
         <div className=" flex p-2 justify-around items-center border-b-2  border-black">
           <h1>JULY 16</h1>
           <h1>DETROIT, MI</h1>

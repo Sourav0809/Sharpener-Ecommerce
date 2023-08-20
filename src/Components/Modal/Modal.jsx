@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { BsFillCartFill } from "react-icons/bs";
 const Overlay = (props) => {
   return (
-    <div className=" scrollbar-hidden overflow-scroll fixed rounded-lg top-2 bg-white p-6 shadow-md text-2xl right-0 w-1/3 mt-[50px] h-[calc(100vh-100px)] ">
+    <div className=" scrollbar-hidden overflow-scroll fixed rounded-lg top-10 bg-white p-6 shadow-md text-2xl right-0 w-1/3 mt-[50px] h-[calc(100vh-100px)] ">
       <div className=" flex items-center justify-center gap-2">
         <h1>My Cart</h1>
         <BsFillCartFill className=" text-2xl text-sky-600" />

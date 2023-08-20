@@ -4,6 +4,9 @@ import Footer from "./Components/Footer/Footer";
 import CartContainer from "./Components/Cart/CartContainer";
 import { useState } from "react";
 import MyRoutes from "./Routes/MyRoutes";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function App() {
   // for cart show and hide
   const [viewCart, setViewCart] = useState(false);
@@ -18,6 +21,7 @@ function App() {
     <>
       {viewCart && <CartContainer hideCartContainer={hideCartContainer} />}
       <Header showCartContainer={showCartContainer} />
+      <ToastContainer />
       <MyRoutes />
       <Footer />
     </>
@@ -25,5 +29,3 @@ function App() {
 }
 
 export default App;
-
-// hello my name is sourav
