@@ -21,10 +21,10 @@ function App() {
   // if the user refresh the page we need to authenticate again
 
   useEffect(() => {
-    setLoader(true);
     let idToken = localStorage.getItem("idToken");
     const authUser = async () => {
       try {
+        setLoader(true);
         const authRes = await axios.post(
           `https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyD_YG6FKy-pwibOzDm5M28DsAg3zgwe27k`,
           { idToken: idToken }
@@ -44,10 +44,12 @@ function App() {
         cartCtx.setCartItems(arr);
 
         logIn(idToken);
+
         setLoader(false);
       } catch (error) {
         console.log(error);
         navigate("/login");
+        setLoader(false);
       }
     };
     // set token
