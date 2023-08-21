@@ -1,5 +1,15 @@
 /* eslint-disable react/prop-types */
+import { useContext } from "react";
+import CartContext from "../Store/CartContext";
+
 const Cart = (props) => {
+  const cartCtx = useContext(CartContext);
+
+  const deleteItemHandeler = () => {
+    const id = props.title;
+    cartCtx.deleteCartHandeler(id);
+  };
+
   return (
     <>
       <div className="mt-5 flex item-center justify-center gap-20">
@@ -13,7 +23,10 @@ const Cart = (props) => {
 
         <div className="flex justify-center items-center gap-3 ">
           <h1>{props.quantity}</h1>
-          <button className=" bg-red-500 text-white p-1 rounded-md text-lg">
+          <button
+            onClick={deleteItemHandeler}
+            className=" bg-red-500 text-white p-1 rounded-md text-lg"
+          >
             Remove
           </button>
         </div>
